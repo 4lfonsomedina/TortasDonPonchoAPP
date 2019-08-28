@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Tortas Don Poncho",
+  "short_name": "Tortas Don Poncho",
+  "version": "com.phonegap.helloworld",
+  "description": "Tienes Hambre por que quieres! con Tortas Don Poncho calma tu hambre en donde estes.",
+  "author": "PhoneGap Team",
+  "icons": [],
+  "start_url": "index.html"
+}

@@ -4,8 +4,8 @@
     <description>
         Tienes Hambre por que quieres! con Tortas Don Poncho calma tu hambre en donde estes.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="4lfonsomedina@gmail.com.com" href="http://TortasDonPoncho.com">
+        TortasDonPoncho and Family
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -16,5 +16,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="15" />
 </widget>

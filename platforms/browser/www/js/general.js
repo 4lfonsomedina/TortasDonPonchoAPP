@@ -1,13 +1,23 @@
 $(document).ready(function() {
+
+	//cargar orden
+	function cargar_orden(){
+		//loader
+		//post que trae las ordenes
+		//validar si hay ordenes
+		$(".contenido_div").load("sin_orden.html");
+	}
 	//cargar menu
 	$(".menu_div").load("menu.html");
+	//contenido principal
+	$(".contenido_div").load("sin_orden.html");
 	//mi orden
-	$(document).on("click","#mi_orden",function(){
-		$(".contenido_div").load("sin_orden.html");
+	$(document).on("click",".mi_orden",function(){
+		cargar_orden();
 	})
 	//ordenar
 	//mi orden
-	$(document).on("click","#ordenar",function(){
+	$(document).on("click",".ordenar",function(){
 		$(".contenido_div").load("ordenar.html");
 	})
 	//subir 

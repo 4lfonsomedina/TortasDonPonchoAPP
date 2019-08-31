@@ -11,34 +11,24 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="spec/lib/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/general.css" />
-
-    <title>TortasDonPonchoAPP</title>
-</head>
-
-<body>
-    
-
-    <!-- --------------------   MENU --------------------- -->
-    <div class="menu_div"></div>
-    
-    <!-- --------------------   CONTENIDO --------------------- -->
-    <div class="contenido_div"></div>
-
-    <!-- -------------------- Ordenes en progreso --------------------- -->
-    
-    <!-- -------------------- /Ordenes en progreso --------------------- -->
-
-</body>
-<footer>
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/general.js"></script>
-    <!--<script type="text/javascript" src="cordova.js"></script>-->
-    <script type="text/javascript" src="js/index.js"></script>
-    
+    <title>TortasDonPoncho</title>
     <script type="text/javascript">
-        app.initialize();
-    </script>   
-</footer>
-</html>
+    $(document).ready(function() {
+        //cargar modulos
+        $('div[modulo]').each(function() {
+            $(this).load($(this).attr('modulo') + '.html');
+        });
+    });
+</script>
+</head>
+<body>
+    <div class='contenedor_loader'><div class='lds-ellipsis'><div></div><div></div><div></div><div></div></div></div>
+<!-- --------------------   MENU --------------------- -->
+<div modulo="menu"></div>
+<!-- --------------------   CONTENIDO --------------------- -->
+<div modulo="sin_orden"></div>
+<!-- --------------------   PIE --------------------- -->
+<div modulo="pie"></div>
+
+

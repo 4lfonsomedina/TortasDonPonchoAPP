@@ -1,5 +1,10 @@
 $(document).ready(function() {
-
+	
+	verificar_usuario();
+	//funcion loader
+	function loader(){
+		return "<div class='contenedor_loader'><div class='lds-ellipsis'><div></div><div></div><div></div><div></div></div></div>";
+	}
 	//cargar orden
 	function cargar_orden(){
 		//loader
@@ -7,17 +12,13 @@ $(document).ready(function() {
 		//validar si hay ordenes
 		$(".contenido_div").load("sin_orden.html");
 	}
-	//cargar menu
-	$(".menu_div").load("menu.html");
-	//contenido principal
-	$(".contenido_div").load("sin_orden.html");
 	//mi orden
 	$(document).on("click",".mi_orden",function(){
-		cargar_orden();
+		window.location.href = "index.html";
 	})
 	//Pagina de ordenar
 	$(document).on("click",".ordenar",function(){
-		$(".contenido_div").load("ordenar.html");
+		window.location.href = "crear_orden.html";
 	})
 	//bajar cantidad de tortas
 	$(document).on("click",".ord_menos",function(){
@@ -46,5 +47,33 @@ $(document).ready(function() {
 			subtot+= cantidad*precio;
 		});
 		$("#sub_tot_ord").html(subtot);
+	}
+
+
+	////////////////////////////////////////////////     SESION     ///////////////////////////////
+	//desaparecer alerta
+	
+	//Funcion para salir de la aplicacion
+	function salir_completamente(){
+		 window.localStorage.clear();
+		 window.location.replace("registrate.html");
+	}
+	//Funcion para verificar datos de session
+	function verificar_usuario(){
+		show_loader();
+		var correo = window.localStorage.getItem("correo");
+		var clave = window.localStorage.getItem("clave");
+		$.post("http://tortasdonponcho.com/index.php/app/validar_sesion",{correo:correo,clave:clave},function(r){
+			if(r=='0'){window.location.href = "registrate.html"; }
+			else{ hide_loader();}
+		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
+	}
+	////////////////////////////////////////////////     LOADER     ///////////////////////////////
+	//funcion loader
+	function show_loader(){
+		$("body").append("<div class='contenedor_loader'><img src='img/logo.png' class='imgr'></div>");
+	}
+	function hide_loader(){
+		$(".contenedor_loader").remove();
 	}
 });

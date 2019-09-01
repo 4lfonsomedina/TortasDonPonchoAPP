@@ -66,7 +66,7 @@ $(document).ready(function() {
 		$.post("http://tortasdonponcho.com/index.php/app/validar_sesion",{correo:correo,clave:clave},function(r){
 			if(r=='0'){window.location.href = "registrate.html"; }
 			else{ hide_loader();}
-		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
+		}).fail(function() {window.location.href = "sin_conexion.html";})
 	}
 	////////////////////////////////////////////////     LOADER     ///////////////////////////////
 	//funcion loader

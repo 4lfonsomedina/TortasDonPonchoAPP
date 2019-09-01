@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="spec/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/general.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <title>TortasDonPoncho</title>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //cargar modulos
+        $('div[modulo]').each(function() {
+            $(this).load($(this).attr('modulo') + '.html');
+        });
+        $(".btn_salir").click(function(){
+        	if(confirm("esta seguro de que desea salir de la aplicación?")){
+        		navigator.app.exitApp();
+        	}
+        })
+        $(".limpiar_sesion").click(function(){
+        	if(confirm("esta seguro de que desea borrar sus datos de sesion?")){
+        		window.localStorage.clear();
+        		window.location.href = "registrate.html";
+        	}
+        })
+        $(".datos_usuario").click(function(){
+        	$(".modal_datos_usuario").modal("show");
+        })
+
+    });
+</script>
+</head>
+<body>
+    <div class='contenedor_loader'><div class='lds-ellipsis'><div></div><div></div><div></div><div></div></div></div>
+<!-- --------------------   MENU --------------------- -->
+<div modulo="menu"></div>
+
+
+<table class="table">
+	<tr class="datos_usuario">
+		<td><i class="fa fa-user" aria-hidden="true"></i> <span class='txt_nombre_usuario'></span></td>
+	</tr>
+	<tr>
+		<td><i class="fa fa-map-marker" aria-hidden="true"></i> Mis Ubicaciones</td>
+	</tr>
+	<tr class="btn_salir">
+		<td><i class="fa fa-power-off" aria-hidden="true"></i>  Salir </td>
+	</tr>
+</table>
+
+
+
+<div class="modal modal_datos_usuario">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Datos de tu cuenta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p><span class='txt_nombre_usuario'></span></p>
+        <p><span class='txt_correo_usuario'></span></p>
+        <p><span class='txt_telefono_usuario'></span></p>
+        <a class="btn btn-danger limpiar_sesion" style="color:white;"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Olvidar Datos de session</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------   PIE --------------------- -->
+<div modulo="pie"></div>

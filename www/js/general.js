@@ -1,5 +1,7 @@
 $(document).ready(function() {
-	
+	$(".txt_nombre_usuario").html(window.localStorage.getItem("nombre"));
+	$(".txt_correo_usuario").html(window.localStorage.getItem("correo"));
+	$(".txt_telefono_usuario").html(window.localStorage.getItem("telefono"));
 	verificar_usuario();
 	//funcion loader
 	function loader(){
@@ -15,6 +17,10 @@ $(document).ready(function() {
 	//mi orden
 	$(document).on("click",".mi_orden",function(){
 		window.location.href = "index.html";
+	})
+	//mi orden
+	$(document).on("click",".conf",function(){
+		window.location.href = "configuracion.html";
 	})
 	//Pagina de ordenar
 	$(document).on("click",".ordenar",function(){
@@ -64,8 +70,17 @@ $(document).ready(function() {
 		var correo = window.localStorage.getItem("correo");
 		var clave = window.localStorage.getItem("clave");
 		$.post("http://tortasdonponcho.com/index.php/app/validar_sesion",{correo:correo,clave:clave},function(r){
-			if(r=='0'){window.location.href = "registrate.html"; }
-			else{ hide_loader();}
+			var r = r.split("|");
+			if(r[0]=='0'){window.location.href = "registrate.html"; }
+			if(r[0]=='1'){
+				var us = JSON.parse(r[1]);
+				window.localStorage.setItem("id_usuario", us.id_cliente);
+				window.localStorage.setItem("nombre", us.nombre);
+				window.localStorage.setItem("telefono", us.clave);
+				window.localStorage.setItem("correo", us.correo);
+				window.localStorage.setItem("clave", us.clave); 
+				hide_loader();
+			}
 		}).fail(function() {window.location.href = "sin_conexion.html";})
 	}
 	////////////////////////////////////////////////     LOADER     ///////////////////////////////

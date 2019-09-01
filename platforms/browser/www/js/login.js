@@ -26,13 +26,14 @@ $(document).ready(function() {
 				var us = JSON.parse(r[1]);
 				window.localStorage.setItem("id_usuario", us.id_cliente);
 				window.localStorage.setItem("nombre", us.nombre);
+				window.localStorage.setItem("telefono", us.clave);
 				window.localStorage.setItem("correo", us.correo);
 				window.localStorage.setItem("clave", us.clave);
 				alert(":) Bienvenido!");
 				window.location.replace("index.html");
 				
 			}
-		})
+		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
 	}
 	//funncion de registro
 	function registro(){
@@ -47,6 +48,7 @@ $(document).ready(function() {
 				window.localStorage.setItem("id_usuario", us.id_cliente);
 				window.localStorage.setItem("nombre", us.nombre);
 				window.localStorage.setItem("correo", us.correo);
+				window.localStorage.setItem("telefono", us.clave);
 				window.localStorage.setItem("clave", us.clave);
 				alert("Gracias por tu registro ahora ya puedes hacer tus pedidos facil y rapido \n :) Bienvenido!");
 				window.location.replace("index.html");

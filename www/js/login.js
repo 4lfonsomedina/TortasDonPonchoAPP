@@ -8,6 +8,10 @@ $(document).ready(function() {
 		e.preventDefault();
 		inicio_session();
 	})
+	$("#form_renovacion").submit(function(e){
+		e.preventDefault();
+		renovacion();
+	})
 
 
 	//Funcion para borrar mensaje de error
@@ -56,6 +60,19 @@ $(document).ready(function() {
 			}
 			
 			
+		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
+	}
+	function renovacion(){
+		//show_loader();
+		$.post("http://tortasdonponcho.com/index.php/app/renovacion",$("#form_renovacion").serialize(),function(r){
+			var r = r.split("|");
+			if(r[0]=='0'){ //error
+				alert(r[1]);
+				hide_loader();
+			}else{
+				alert("Se a enviado un correo a "+$(".input_correo").val()+" con las instrucciones de renovación de clave");
+				//window.location.replace("login.html");
+			}
 		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
 	}
 	//funcion loader

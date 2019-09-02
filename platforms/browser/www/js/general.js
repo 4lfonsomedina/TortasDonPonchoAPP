@@ -2,11 +2,9 @@ $(document).ready(function() {
 	$(".txt_nombre_usuario").html(window.localStorage.getItem("nombre"));
 	$(".txt_correo_usuario").html(window.localStorage.getItem("correo"));
 	$(".txt_telefono_usuario").html(window.localStorage.getItem("telefono"));
+	
 	verificar_usuario();
-	//funcion loader
-	function loader(){
-		return "<div class='contenedor_loader'><div class='lds-ellipsis'><div></div><div></div><div></div><div></div></div></div>";
-	}
+	
 	//cargar orden
 	function cargar_orden(){
 		//loader
@@ -67,9 +65,11 @@ $(document).ready(function() {
 	//Funcion para verificar datos de session
 	function verificar_usuario(){
 		show_loader();
+		
 		var correo = window.localStorage.getItem("correo");
 		var clave = window.localStorage.getItem("clave");
-		$.post("http://tortasdonponcho.com/index.php/app/validar_sesion",{correo:correo,clave:clave},function(r){
+
+		$.post("https://tortasdonponcho.com/index.php/app/validar_sesion",{correo:correo,clave:clave},function(r){
 			var r = r.split("|");
 			if(r[0]=='0'){window.location.href = "registrate.html"; }
 			if(r[0]=='1'){

@@ -21,7 +21,7 @@ $(document).ready(function() {
 	//Function que realiza la validacion de usuario
 	function inicio_session(){
 		show_loader();
-		$.post("http://tortasdonponcho.com/index.php/app/acceso_sesion",$("#form_login").serialize(),function(r){
+		$.post("https://tortasdonponcho.com/index.php/app/acceso_sesion",$("#form_login").serialize(),function(r){
 			var r = r.split("|");
 			if(r[0]=='0'){ //error
 				alert(r[1]);
@@ -42,7 +42,7 @@ $(document).ready(function() {
 	//funncion de registro
 	function registro(){
 		show_loader();
-		$.post("http://tortasdonponcho.com/index.php/app/registro",$("#form_registro").serialize(),function(r){
+		$.post("https://tortasdonponcho.com/index.php/app/registro",$("#form_registro").serialize(),function(r){
 			var r = r.split("|");
 			if(r[0]=='0'){ //error
 				alert(r[1]);
@@ -63,15 +63,15 @@ $(document).ready(function() {
 		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
 	}
 	function renovacion(){
-		//show_loader();
-		$.post("http://tortasdonponcho.com/index.php/app/renovacion",$("#form_renovacion").serialize(),function(r){
+		show_loader();
+		$.post("https://tortasdonponcho.com/index.php/app/renovacion",$("#form_renovacion").serialize(),function(r){
 			var r = r.split("|");
 			if(r[0]=='0'){ //error
 				alert(r[1]);
 				hide_loader();
 			}else{
 				alert("Se a enviado un correo a "+$(".input_correo").val()+" con las instrucciones de renovación de clave");
-				//window.location.replace("login.html");
+				window.location.replace("login.html");
 			}
 		}).fail(function() {alert( "Verifica tu conexion, no es posible conectar con el servidor de TortasDonPoncho" );hide_loader();})
 	}

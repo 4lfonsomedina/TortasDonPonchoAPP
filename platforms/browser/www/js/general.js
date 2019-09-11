@@ -89,6 +89,8 @@ $(document).ready(function() {
 		$("body").append("<div class='contenedor_loader'><img src='img/logo.png' class='imgr'></div>");
 	}
 	function hide_loader(){
+		$('div[modulo]').hide();
 		$(".contenedor_loader").remove();
+		$('div[modulo]').show(900);
 	}
 });

@@ -64,7 +64,7 @@ $(document).ready(function() {
 	}
 	function renovacion(){
 		show_loader();
-		$.post("https://tortasdonponcho.com/index.php/app/renovacion",$("#form_renovacion").serialize(),function(r){
+		$.post("http://tortasdonponcho.com/index.php/app/renovacion",$("#form_renovacion").serialize(),function(r){
 			var r = r.split("|");
 			if(r[0]=='0'){ //error
 				alert(r[1]);

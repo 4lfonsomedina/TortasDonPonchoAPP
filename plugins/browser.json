@@ -9,6 +9,9 @@
   "installed_plugins": {
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-browsersync": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
   "dependent_plugins": {}

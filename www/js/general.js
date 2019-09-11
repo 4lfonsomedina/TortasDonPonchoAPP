@@ -91,6 +91,6 @@ $(document).ready(function() {
 	function hide_loader(){
 		$('div[modulo]').hide();
 		$(".contenedor_loader").remove();
-		$('div[modulo]').show(900);
+		$('div[modulo]').show(300);
 	}
 });
